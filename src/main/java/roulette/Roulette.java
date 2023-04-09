@@ -6,18 +6,28 @@ public class Roulette {
 
 	private final Random random;
 	private final int seconds = 1;
+	private String resultat;
 
     public Roulette(Random random) {
         this.random = random;
     }
+    
+    public String getResultat() {
+    	return this.resultat;
+    }
+    
+    public void setResultat(String resultat) {
+    	this.resultat = resultat;
+    }
 
-    public String tourner() throws InterruptedException {
-        Thread.sleep(seconds * 1000L); // wait for the ball to stop
-        int result = random.nextInt(38);
-        if (result == 37) {
-            return "00";
+    public void tourner() throws InterruptedException {
+    	Thread.sleep(seconds * 1000L); // wait for the ball to stop
+        int numeroAleatoire = random.nextInt(38);
+        if (numeroAleatoire == 37) {
+            this.resultat = "00";
+        }else {
+        	this.resultat = Integer.toString(numeroAleatoire);
         }
-        return Integer.toString(result);
     }
     
     public String getCouleur(int numero) {
@@ -30,22 +40,19 @@ public class Roulette {
         }
     }
     
-    public int gagner(String color, int mise) throws InterruptedException {
-        int result = Integer.valueOf(tourner());
-        if (color.equals(getCouleur(result))) {
+    public int gagnerAvecCouleur(String color, int mise){
+        if (color.equals(getCouleur(Integer.valueOf(this.resultat)))) {
             return mise * 5;
         }else {
         	return 0;
         }
     }
     
-    public int gagner(int numero, int mise) throws InterruptedException {
-        if(numero == Integer.valueOf(tourner())) {
+    public int gagnerAvecNumero(String numero, int mise){
+        if(numero.equals(this.resultat)){
         	return mise * 10;
         }else {
         	return 0;
         }
     }
-    
-    
 }

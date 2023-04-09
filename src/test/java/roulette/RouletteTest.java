@@ -12,6 +12,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -24,6 +25,7 @@ public class RouletteTest {
     private static Instant startedAt;
     
     @BeforeEach
+    @DisplayName("Configuration Initiale")
     public void setUp() {
 		System.out.println("Avant tous mes tests, j'initialise mes ressources");
         random = new Random();
@@ -37,12 +39,14 @@ public class RouletteTest {
 	}
     
     @BeforeAll
+    @DisplayName("Debut du calcul de duree")
 	public static void initStartingTime() {
 		System.out.println("Juste pour appliquer mon cours d'Openclassroom. Hahaha !");
 		startedAt = Instant.now();
 	}
 
 	@AfterAll
+	@DisplayName("Fin du calcul de duree")
 	public static void showTestDuration() {
 		System.out.println("Maintenant je calcule la duree. Apres tous les tests");
 		Instant endedAt = Instant.now();
@@ -51,6 +55,7 @@ public class RouletteTest {
 	}
     
     @Test
+    @DisplayName("Get et Set Resultat")
     public void testResultat() {
         roulette.setResultat("4");
         assertEquals(roulette.getResultat(), "4");
@@ -58,6 +63,7 @@ public class RouletteTest {
 
     @Timeout(20) // Ici pour tester la performance d'une fonction
     @Test
+    @DisplayName("Tourner")
     public void testTourner() throws InterruptedException {
         roulette.tourner();
         int result = Integer.valueOf(roulette.getResultat());

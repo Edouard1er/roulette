@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: roulette.RouletteTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 24.105 s <<< FAILURE! - in roulette.RouletteTest
+roulette.RouletteTest.testBetting  Time elapsed: 21.012 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <5> but was: <0>
+	at roulette.RouletteTest.testBetting(RouletteTest.java:48)
+
+roulette.RouletteTest.testSpinDoubleZero  Time elapsed: 1.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <37> but was: <19>
+	at roulette.RouletteTest.testSpinDoubleZero(RouletteTest.java:22)
+

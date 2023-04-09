@@ -12,7 +12,7 @@ public class Roulette {
     }
 
     public String tourner() throws InterruptedException {
-        Thread.sleep(seconds * 1000L); // wait for the ball to stop
+        Thread.sleep(seconds * 1000L);
         int result = random.nextInt(38);
         if (result == 37) {
             return "00";
@@ -30,7 +30,7 @@ public class Roulette {
         }
     }
     
-    public int gagner(String color, int mise) throws InterruptedException {
+    public int gagnerAvecCouleur(String color, int mise) throws InterruptedException {
         int result = Integer.valueOf(tourner());
         if (color.equals(getCouleur(result))) {
             return mise * 5;
@@ -39,8 +39,8 @@ public class Roulette {
         }
     }
     
-    public int gagner(int numero, int mise) throws InterruptedException {
-        if(numero == Integer.valueOf(tourner())) {
+    public int gagnerAvecNumero(String numero, int mise) throws InterruptedException {
+        if(numero == tourner()) {
         	return mise * 10;
         }else {
         	return 0;

@@ -40,30 +40,30 @@ public class RouletteTest {
     }
     
 	@ParameterizedTest(name = "testGagnerAvecCouleurGagnante")
-	@CsvSource({ "'Rouge',50", "'Vert',50", "'black', 50"})
+	@CsvSource({ "'Rouge',50", "'Vert',50", "'Noir', 50"})
     public void testGagnerAvecCouleurGagnante(String couleur, int result) throws InterruptedException {
-        int gain = roulette.gagner(couleur, 10);
+        int gain = roulette.gagnerAvecCouleur(couleur, 10);
         assertTrue(gain == result);
     }
     
     @ParameterizedTest(name = "testGagnerAvecCouleurPerdante")
-	@CsvSource({ "'Rouge',0", "'Vert',0", "'black', 0"})
+	@CsvSource({ "'Rouge',0", "'Vert',0", "'Noir', 0"})
     public void testGagnerAvecCouleurPerdante(String couleur, int result) throws InterruptedException {
-    	int gain = roulette.gagner(couleur, 10);
+    	int gain = roulette.gagnerAvecCouleur(couleur, 10);
         assertTrue(gain == result);
     }
     
     @ParameterizedTest(name = "testGagnerAvecNumeroGagnant")
-	@CsvSource({ "1,100", "4,100", "6, 100"})
-    public void testGagnerAvecNumeroGagnant(int numero, int result) throws InterruptedException {
-        int gain = roulette.gagner(numero, 10);
+	@CsvSource({ "'1',100", "'4',100", "'6', 100"})
+    public void testGagnerAvecNumeroGagnant(String numero, int result) throws InterruptedException {
+        int gain = roulette.gagnerAvecNumero(numero, 10);
         assertTrue( gain == result);
     }
     
     @ParameterizedTest(name = "testGagnerAvecNumeroPerdant")
-	@CsvSource({ "1,0", "2,0", "3, 0"})
-    public void testGagnerAvecNumeroPerdant(int numero, int result) throws InterruptedException {
-    	int gain = roulette.gagner(numero, 10);
+	@CsvSource({ "'1',0", "'2',0", "'3', 0"})
+    public void testGagnerAvecNumeroPerdant(String numero, int result) throws InterruptedException {
+    	int gain = roulette.gagnerAvecNumero(numero, 10);
     	assertTrue( gain == result);
     }
 }

@@ -8,16 +8,12 @@ public class Roulette {
 	private final int seconds = 1;
 	private String resultat;
 
-    public Roulette(Random random) {
-        this.random = random;
+    public Roulette() {
+        this.random = new Random();
     }
     
     public String getResultat() {
     	return this.resultat;
-    }
-    
-    public void setResultat(String resultat) {
-    	this.resultat = resultat;
     }
 
     public void tourner() throws InterruptedException {
